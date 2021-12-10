@@ -1,4 +1,4 @@
-# Savvy Coders Project Boilerplate Starter Kit
+# SavvyCoders Stateless Single Page Appliccation
 
 ## Overview
 

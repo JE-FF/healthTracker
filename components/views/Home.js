@@ -1,5 +1,5 @@
 import html from "html-literal";
-import sharkImage from "/assets/img/19732.png";
+import sharkimage from "../../assets/image/funshark.jpeg";
 
 export default () => html`
   <section id="jumbotron">
@@ -8,7 +8,7 @@ export default () => html`
       >"Call to Action Button"</a
     >
   </section>
-  <section id="shark">
-    <img src="${sharkImage}" />
-  </section>
+  <div id="shark">
+    <img src="${sharkimage}" />
+  </div>
 `;
