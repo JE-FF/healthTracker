@@ -11,7 +11,7 @@ router
     ":page": params => {
       let page = capitalize(params.page);
       render(state[page]);
-    }
+    }a
   })
   .resolve();
 
