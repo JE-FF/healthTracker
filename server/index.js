@@ -9,6 +9,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGODB);
 const db = mongoose.connection;
 
+// MongoDB Atlas does not allow connections behind a public VPN.
 db.on("error", console.error.bind(console, "connection error:"));
 db.once(
   "open",
