@@ -2,6 +2,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const pizzas = require("./routers/pizzas");
+
 // Initialize the Express application
 const app = express();
 
@@ -21,8 +23,25 @@ const logging = (request, response, next) => {
   next();
 };
 
+// CORS Middleware
+const cors = (req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type, Accept,Authorization,Origin"
+  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+};
+
+app.use(cors);
 app.use(express.json());
 app.use(logging);
+app.use("/pizzas", pizzas);
 
 /*
   express supports chaining `use()` statements,
@@ -36,26 +55,6 @@ app.get("/status", (request, response) => {
   // Create the response body
   // End and return the response
   response.send(JSON.stringify({ message: "Service healthy" }));
-});
-
-app.route("/pizzas").get((request, response) => {
-  response.send(
-    JSON.stringify({
-      size: "Large",
-      sauce: "Red",
-      toppings: ["Pepperoni"]
-    })
-  );
-});
-
-app.post("/pizzas/:id", (request, response) => {
-  const id = request.params.id;
-  const body = request.body;
-  response.status(200).json({
-    message: "Success",
-    pizza_id: id,
-    pizza_body: body
-  });
 });
 
 // Tell the Express app to start listening

@@ -5,7 +5,7 @@ ${st.pizzas
   .map(pizza => {
     return `<tr><td>${pizza.crust}</td><td>${pizza.cheese}</td><td>${
       pizza.sauce
-    }</td><td>${pizza.toppings.join(" & ")}</td></tr>`;
+    }</td><td>${pizza.toppings.join(", ")}</td></tr>`;
   })
   .join("")}
 </table>
