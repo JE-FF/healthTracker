@@ -1,5 +1,6 @@
 .DS_Store
 .cache
+REFERENCE/
 dist
 node_modules
 *.sw*
